@@ -1,0 +1,22 @@
+{
+  "counts": {
+    "intrinsic": 2448,
+    "extrinsic": 2307,
+    "no": 2245
+  },
+  "train_counts": {
+    "intrinsic": 1958,
+    "extrinsic": 1846,
+    "no": 1796
+  },
+  "val_counts": {
+    "intrinsic": 245,
+    "extrinsic": 230,
+    "no": 225
+  },
+  "test_counts": {
+    "intrinsic": 245,
+    "extrinsic": 231,
+    "no": 224
+  }
+}

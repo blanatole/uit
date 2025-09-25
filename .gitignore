@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+
+# Environments / tooling
+.env
+.venv/
+venv/
+env/
+.idea/
+.vscode/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+
+# Builds / packaging
+build/
+dist/
+*.egg-info/
+
+# Checkpoints / model artifacts
+out/
+checkpoints/
+**/checkpoint-*/
+**/adapter/
+*.bin
+*.safetensors
+
+# Caches
+.cache/
+cache/
+.hf_cache/
+
+# Logs & results
+*.log
+logs/
+lightning_logs/
+results_*.log
+
+# Predictions (can be regenerated)
+
+# Data (keep JSONL splits, ignore heavy CSV/Parquet)
+
+# Notebooks
+.ipynb_checkpoints/
+
+out/*
+
+
