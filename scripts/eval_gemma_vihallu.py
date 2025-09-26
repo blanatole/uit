@@ -45,11 +45,15 @@ def predict(df_path: str, model_dir: str, test_mode: bool = False):
     print("=" * 50)
     
     # Tạo progress bar với thông tin chi tiết hơn - force hiển thị
-    pbar = tqdm(df.iterrows(), total=len(df), desc="🔍 Evaluating", 
-                bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]',
-                disable=False,  # Force enable
-                dynamic_ncols=True,  # Auto-adjust width
-                ascii=True)  # Use ASCII characters for better compatibility
+    pbar = tqdm(
+        df.iterrows(),
+        total=len(df),
+        desc="🔍 Evaluating",
+        bar_format='{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]',
+        disable=False,
+        dynamic_ncols=True,
+        ascii=True,
+    )
     
     for i, (_, row) in enumerate(pbar):
         start_time = time.time()
@@ -76,15 +80,13 @@ def predict(df_path: str, model_dir: str, test_mode: bool = False):
             'Pred': y,
             'True': row["label"].strip().lower()
         })
-        
-        # Force flush để hiển thị progress bar
         pbar.refresh()
 
     acc = accuracy_score(gts, preds)
-    f1m = f1_score(gts, preds, average="macro", labels=LABELS)
+    f1m = f1_score(gts, preds, average="macro", labels=LABELS, zero_division=0)
     print("Accuracy:", acc)
     print("Macro-F1:", f1m)
-    print("Report:\n", classification_report(gts, preds, labels=LABELS, digits=4))
+    print("Report:\n", classification_report(gts, preds, labels=LABELS, digits=4, zero_division=0))
     print("Confusion:\n", confusion_matrix(gts, preds, labels=LABELS))
 
 
@@ -105,5 +107,3 @@ if __name__ == "__main__":
         print("🧪 TEST MODE: Only evaluating on 25 samples")
     
     predict(df_path, args.ckpt, test_mode=args.test_mode)
-
-
